@@ -1,0 +1,74 @@
+{
+  "jobId": "expected-job-id",
+  "file": {
+    "rows": 12,
+    "columns": 4,
+    "headers": ["id", "name", "age", "city"]
+  },
+  "columns": [
+    {"name": "id", "inferredType": "INTEGER", "missingCount": 0},
+    {"name": "name", "inferredType": "TEXT", "missingCount": 0},
+    {"name": "age", "inferredType": "INTEGER", "missingCount": 1},
+    {"name": "city", "inferredType": "TEXT", "missingCount": 2}
+  ],
+  "issues": [
+    {
+      "id": 1,
+      "category": "WHITESPACE",
+      "column": "name",
+      "rows": [3],
+      "message": "Cells with leading or trailing whitespace",
+      "suggestedAction": "TRIM"
+    },
+    {
+      "id": 2,
+      "category": "MISSING_VALUE",
+      "column": "age",
+      "rows": [4],
+      "message": "1 missing value(s)",
+      "suggestedAction": "SET_EMPTY"
+    },
+    {
+      "id": 3,
+      "category": "MISSING_VALUE",
+      "column": "city",
+      "rows": [1, 5],
+      "message": "2 missing value(s)",
+      "suggestedAction": "SET_EMPTY"
+    },
+    {
+      "id": 4,
+      "category": "TYPE_MISMATCH",
+      "column": "age",
+      "rows": [6],
+      "message": "Expected INTEGER, found incompatible value(s)",
+      "suggestedAction": "SET_EMPTY"
+    },
+    {
+      "id": 5,
+      "category": "DUPLICATE_ROW",
+      "column": null,
+      "rows": [2, 11],
+      "message": "Identical rows starting with row 2",
+      "suggestedAction": "REMOVE_ROW"
+    },
+    {
+      "id": 6,
+      "category": "OUTLIER",
+      "column": "age",
+      "rows": [10],
+      "message": "Outside IQR bounds [16.38, 45.38] (heuristic)",
+      "suggestedAction": "KEEP_AND_FLAG"
+    }
+  ],
+  "summary": {
+    "totalIssues": 6,
+    "byCategory": {
+      "WHITESPACE": 1,
+      "MISSING_VALUE": 2,
+      "TYPE_MISMATCH": 1,
+      "DUPLICATE_ROW": 1,
+      "OUTLIER": 1
+    }
+  }
+}

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSV Quality Check</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+<main class="page">
+    <header class="page-header">
+        <div>
+            <p class="eyebrow">CSV DATA TOOLKIT</p>
+            <h1>CSV Quality Check</h1>
+            <p class="intro">Find data quality issues and download a cleaned copy of your file.</p>
+        </div>
+        <section class="service-status" aria-label="Service status">
+            <span class="status-item">
+                <span class="status-dot" data-service="gateway" aria-label="Gateway status unknown"></span>
+                Gateway
+            </span>
+            <span class="status-item">
+                <span class="status-dot" data-service="analysis" aria-label="Analysis status unknown"></span>
+                Analysis
+            </span>
+            <span class="status-item">
+                <span class="status-dot" data-service="cleaning" aria-label="Cleaning status unknown"></span>
+                Cleaning
+            </span>
+        </section>
+    </header>
+
+    <section class="card upload-card" aria-labelledby="upload-heading">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">YOUR DATA</p>
+                <h2 id="upload-heading">Analyze a CSV file</h2>
+            </div>
+            <span class="file-limit">CSV · up to 10 MB</span>
+        </div>
+
+        <div id="upload-controls">
+            <label class="file-picker" for="file-input">
+                <span class="file-picker-icon" aria-hidden="true">↑</span>
+                <span>
+                    <strong>Choose a CSV file</strong>
+                    <span id="file-name" class="file-name">No file selected</span>
+                </span>
+            </label>
+            <input id="file-input" type="file" accept=".csv,text/csv">
+            <button id="analyze-button" class="button button-primary" type="button" disabled>
+                Analyze
+            </button>
+        </div>
+        <button id="clear-button" class="button button-secondary" type="button" hidden>Clear</button>
+        <p id="error-box" class="error-box" role="alert" hidden></p>
+    </section>
+
+    <section id="results" class="results" aria-labelledby="results-heading" hidden>
+        <div class="results-heading">
+            <div>
+                <p class="eyebrow">ANALYSIS REPORT</p>
+                <h2 id="results-heading">Data quality overview</h2>
+            </div>
+            <button id="download-button" class="button button-primary" type="button" disabled>
+                Download cleaned CSV
+            </button>
+        </div>
+
+        <div id="summary-chips" class="summary-chips" aria-label="Report summary"></div>
+
+        <section class="card issues-card" aria-labelledby="issues-heading">
+            <div class="section-heading">
+                <div>
+                    <h3 id="issues-heading">Detected issues</h3>
+                    <p class="muted">Rows are numbered from the first data row; the header is not counted.</p>
+                </div>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                    <tr>
+                        <th scope="col">Category</th>
+                        <th scope="col">Column</th>
+                        <th scope="col">Rows</th>
+                        <th scope="col">Suggested action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="issues-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </section>
+
+</main>
+</body>
+</html>

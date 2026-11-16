@@ -1,2 +1,7 @@
 Requirements.txt
 DevelopmentPlan.md
+.idea
+.mvn
+
+/shared/
+/servers/

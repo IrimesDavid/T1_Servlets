@@ -1,0 +1,19 @@
+{
+  "jobId": "expected-job-id",
+  "file": {
+    "rows": 3,
+    "columns": 4,
+    "headers": ["id", "name", "age", "active"]
+  },
+  "columns": [
+    {"name": "id", "inferredType": "INTEGER", "missingCount": 0},
+    {"name": "name", "inferredType": "TEXT", "missingCount": 0},
+    {"name": "age", "inferredType": "INTEGER", "missingCount": 0},
+    {"name": "active", "inferredType": "BOOLEAN", "missingCount": 0}
+  ],
+  "issues": [],
+  "summary": {
+    "totalIssues": 0,
+    "byCategory": {}
+  }
+}
